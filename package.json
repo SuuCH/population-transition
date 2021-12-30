@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:eslint": "next lint",
-    "lint:prettier": "prettier --check --ignore-unknown \"**/*\""
+    "lint:prettier": "prettier --check --ignore-unknown \"**/*\"",
+    "lint:stylelint": "stylelint \"**/*.{css,scss}\""
   },
   "dependencies": {
     "next": "12.0.7",
@@ -23,6 +24,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.5.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0",
     "typescript": "4.5.4"
   }
 }

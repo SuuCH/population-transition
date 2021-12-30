@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    "stylelint-prettier",
+    "stylelint-order"
+  ],
+  "extedns": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "screen"]
+      }
+    ],
+    "string-quotes": "double",
+    "order/properties-alphabetical-order": true
+  },
+  "ignoreFiles": [
+    "**/node_modules/**",
+    "**/*.tsx"
+  ]
+}
