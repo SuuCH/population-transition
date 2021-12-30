@@ -1,8 +1,5 @@
 {
-  "plugins": [
-    "stylelint-prettier",
-    "stylelint-order"
-  ],
+  "plugins": ["stylelint-prettier", "stylelint-order"],
   "extedns": [
     "stylelint-config-standard",
     "stylelint-prettier/recommended",
@@ -18,8 +15,5 @@
     "string-quotes": "double",
     "order/properties-alphabetical-order": true
   },
-  "ignoreFiles": [
-    "**/node_modules/**",
-    "**/*.tsx"
-  ]
+  "ignoreFiles": ["**/node_modules/**", "**/*.tsx"]
 }
