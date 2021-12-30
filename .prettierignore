@@ -1,2 +1,6 @@
 .next
 public
+.github
+next.config.js
+next-env.d.ts
+.eslintrc.json
