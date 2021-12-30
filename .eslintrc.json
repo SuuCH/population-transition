@@ -1,3 +1,41 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": ["public"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    // extendsで適用した中で適用できないもの
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "jsx-a11y/anchor-is-valid": "off", //next.jsのLinkはto属性使うため不要
+    "@typescript-eslint/no-unsafe-member-access": "off"
+  },
+  "overrides": [
+    {
+      "files": ["pages/**"],
+      "rules": {"import/no-default-export": "off"}
+    }
+  ],
+  "settings": {
+    "react": { "version": "detect" },
+    "import/extensions": [".ts", ".tsx", ".d.ts", ".js"],
+    "import/external-module-folders": ["node_modules", "node_modules/@types"]
+  }
+
 }
