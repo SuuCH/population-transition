@@ -2,13 +2,16 @@
   "name": "population-trasition",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "dev": "next dev",
+    "fmt": "npx sort-package-json package.json && next lint --fix && stylelint --fix \"**/*.{css,scss}\" && prettier --write --ignore-unknown \"**/*\"",
+    "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:stylelint && yarn lint:tsc && yarn lint:unused",
     "lint:eslint": "next lint",
     "lint:prettier": "prettier --check --ignore-unknown \"**/*\"",
-    "lint:stylelint": "stylelint \"**/*.{css,scss}\""
+    "lint:stylelint": "stylelint \"**/*.{css,scss}\"",
+    "lint:tsc": "tsc --noEmit",
+    "lint:unused": "next-unused",
+    "start": "next start"
   },
   "dependencies": {
     "next": "12.0.7",
@@ -23,6 +26,7 @@
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "next-unused": "^0.0.6",
     "prettier": "^2.5.1",
     "stylelint": "^14.2.0",
     "stylelint-config-prettier": "^9.0.3",
