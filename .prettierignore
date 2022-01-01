@@ -4,3 +4,4 @@ public
 next.config.js
 next-env.d.ts
 .eslintrc.json
+storybook-static/*
