@@ -13,7 +13,8 @@
     "lint:unused": "next-unused",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "12.0.7",
@@ -40,6 +41,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-storybook": "^0.5.5",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.4",
     "next-unused": "^0.0.6",
     "prettier": "^2.5.1",
     "sass-loader": "^12.4.0",
@@ -54,5 +57,10 @@
     "stylelint-order": "^5.0.0",
     "stylelint-prettier": "^2.0.0",
     "typescript": "4.5.4"
+  },
+  "lint-staged": {
+    "**/*": "yarn lint:prettier",
+    "*.{ts,tsx}": "yarn lint:eslint && yarn lint:tsc && yarn lint:next-unused",
+    "*.{css,scss}": "yarn lint:stylelint"
   }
 }
