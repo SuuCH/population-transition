@@ -65,7 +65,7 @@ git cz
 
 - 基本的にコミットメッセージは commitizen を扱うことを前提としフォーマットもそれに合わせることとする
 
-## 開発指針
+## 開発指針（コンポーネント分割について）
 
 - 長くなるので以下の URL に記載する  
-  https://hackmd.io/@rikufujii/r1-bTgy3t
+  https://github.com/SuuCH/population-transition/wiki/%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E5%88%86%E5%89%B2%E6%8C%87%E9%87%9D
