@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# population-transition
 
-## Getting Started
+README v1.0.0
 
-First, run the development server:
+## システム構成
 
-```bash
-npm run dev
-# or
-yarn dev
+![システム構成](https://user-images.githubusercontent.com/60252699/147864349-9a3fbc8d-d38f-4284-ab6b-350e7d782ba2.png)
+
+## アプリ概要
+
+本アプリは、RESAS(地域経済分析システム) API の「都道府県一覧」API から「人口構成」を取得し都道府県一覧の動的チェックボックスを生成します。 チェックを入れるとその県に対応した折れ線グラフ（X 軸：年、Y 軸：人口数）を動的に生成して表示します。
+
+## 環境構築方法
+
+- 本リポジトリをクローンする
+- node のバージョン管理ツール（nodenv など）を用いてバージョンを 14 以上にする
+- 以下のコマンドを実行する
+
+```
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+環境構築に失敗した場合 Github discussions にどこの工程で失敗したかとエラーを記載し投稿してください。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 開発方法
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+基本的には以下の手順に従い開発を行っていく。
+branch 命名などは後述する
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- issue に assign する
+- 開発用 branch を切りそこで作業する（main から分岐する）
+- 作業終了後以下のコマンドを実行し lint と format を行う
 
-## Learn More
+```
+yarn lint
+yarn fmt
+```
 
-To learn more about Next.js, take a look at the following resources:
+- コミットする。コミットには[commitizen](https://dev.classmethod.jp/articles/commitizen/)を用いることを推奨する。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+git cz
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- push し pull request を立てる。
 
-## Deploy on Vercel
+  - pull request は作業が完了していなくても draft で立てることを推奨する（進捗が目に見えて分かるため）
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- マージする(この時必ず squash merge をする)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 開発ルール
+
+### ブランチについて
+
+- 基本的には main ブランチからブランチを切る
+- 命名は`{build,chore,ci,feat,style,fix,revert,docs}/{ブランチで行う作業}`とする。
+  - 例 1: feat/insert-auth
+  - 例 2: docs/improve-readme
+  - 例 3: ci/insert-github-workflow
+- 大きな開発（〜〜ページの作成など）を行うときは例外とし`develop/{ブランチで行う作業}`というブランチを main から分ける
+- この時の作業ブランチは`develop/〜〜`から分ける
+- `develop/〜〜`から分けた作業ブランチをマージする時は**suquash merge**で良いが`develop/〜〜`を main にマージする時は**普通のマージ**を行うことに注意する
+
+### コミットについて
+
+- 基本的にコミットメッセージは commitizen を扱うことを前提としフォーマットもそれに合わせることとする
+
+## 開発指針（コンポーネント分割について）
+
+- 長くなるので以下の URL に記載する  
+  https://github.com/SuuCH/population-transition/wiki/%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E5%88%86%E5%89%B2%E6%8C%87%E9%87%9D
