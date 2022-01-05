@@ -18,9 +18,14 @@
   },
   "lint-staged": {
     "**/*": "yarn lint:prettier",
-    "*.{ts,tsx}": "yarn lint:eslint && yarn lint:tsc && yarn lint:next-unused",
+    "**.{ts,tsx}": "yarn run eslint --cache --ext",
     "*.{css,scss}": "yarn lint:stylelint"
   },
+  "eslintIgnore": [
+    ".eslintrc.js",
+    "next.config.js",
+    "storybook-static/**"
+  ],
   "dependencies": {
     "next": "12.0.7",
     "react": "17.0.2",
