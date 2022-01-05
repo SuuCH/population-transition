@@ -10,6 +10,13 @@ const Styles: { [key: string]: CSSProperties } = {
 };
 
 const CheckBoxContainer: VFC = () => {
+  const handleOnChangeCheckBox = (
+    prefCode: number,
+    prefName: string,
+    check: boolean
+  ) => {
+    console.log(prefCode, prefName, check);
+  };
   const { data, isLoading, isError } = usePrefecturesSwr();
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>failed to load</div>;
@@ -17,7 +24,10 @@ const CheckBoxContainer: VFC = () => {
     <div style={Styles.container}>
       <div style={Styles.innner}>
         <Title label="県一覧" />
-        <CheckField prefectures={data.result} />
+        <CheckField
+          prefectures={data.result}
+          onChange={handleOnChangeCheckBox}
+        />
       </div>
     </div>
   );

@@ -1,17 +1,18 @@
 import type { CSSProperties, VFC } from "react";
-import type { prefecture } from "../../../types/prefectures";
+import type { Prefecture } from "../../../types/prefectures";
 
 import { CheckBox } from "../../atoms/CheckBox";
 
 interface Props {
-  prefectures: prefecture[] | undefined;
+  prefectures: Prefecture[] | undefined;
+  onChange: (prefCode: number, prefName: string, check: boolean) => void;
 }
 
 const Styles: { [key: string]: CSSProperties } = {
   checkField: {},
 };
 
-const CheckField: VFC<Props> = ({ prefectures }: Props) => {
+const CheckField: VFC<Props> = ({ prefectures, onChange }: Props) => {
   return (
     <div style={Styles.checkField}>
       {prefectures?.map((value) => (
@@ -21,6 +22,7 @@ const CheckField: VFC<Props> = ({ prefectures }: Props) => {
           id={"pref" + value.prefCode}
           prefCode={value.prefCode}
           prefName={value.prefName}
+          onChange={onChange}
         />
       ))}
     </div>
