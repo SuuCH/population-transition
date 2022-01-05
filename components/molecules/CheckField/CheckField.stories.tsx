@@ -14,16 +14,16 @@ const Basic = Template.bind({});
 Basic.args = {
   prefectures: [
     {
-      id: 1,
-      name: "北海道",
+      prefCode: 1,
+      prefName: "北海道",
     },
     {
-      id: 2,
-      name: "青森県",
+      prefCode: 2,
+      prefName: "青森県",
     },
     {
-      id: 3,
-      name: "岩手県",
+      prefCode: 3,
+      prefName: "岩手県",
     },
   ],
 };
