@@ -5,8 +5,14 @@ interface Props {
 }
 
 const Styles: { [key: string]: CSSProperties } = {
-  titlePanel: {},
-  text: {},
+  titlePanel: {
+    marginLeft: "3.0rem",
+  },
+  text: {
+    fontSize: "2.0rem",
+    textDecoration: "underline",
+    textDecorationColor: "black",
+  },
 };
 
 const Title: VFC<Props> = ({ label }: Props) => {
