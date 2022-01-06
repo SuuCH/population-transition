@@ -9,8 +9,16 @@ interface Props {
 }
 
 const Styles: { [key: string]: CSSProperties } = {
-  checkBox: {},
-  label: {},
+  checkBox: {
+    borderRadius: "10px",
+    border: "1px solid",
+    padding: "5px",
+    margin: "10px",
+    textAlign: "center",
+  },
+  box: {
+    cursor: "pointer",
+  },
 };
 
 const CheckBox: VFC<Props> = ({
@@ -25,11 +33,10 @@ const CheckBox: VFC<Props> = ({
       <input
         id={id}
         onChange={(e) => onChange(prefCode, prefName, e.target.checked)}
+        style={Styles.box}
         type="checkbox"
       />
-      <label htmlFor={id} style={Styles.label}>
-        {label}
-      </label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 };

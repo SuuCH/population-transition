@@ -9,7 +9,12 @@ interface Props {
 }
 
 const Styles: { [key: string]: CSSProperties } = {
-  checkField: {},
+  checkField: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    margin: "20px",
+  },
 };
 
 const CheckField: VFC<Props> = ({ prefectures, onChange }: Props) => {
