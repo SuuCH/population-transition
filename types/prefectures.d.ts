@@ -7,4 +7,9 @@ interface Composition {
   value: number;
 }
 
-export type { Prefecture, Composition };
+interface GraphData {
+  prefName: string;
+  data: Composition[];
+}
+
+export type { Prefecture, Composition, GraphData };
