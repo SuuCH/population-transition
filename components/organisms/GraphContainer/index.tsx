@@ -1,11 +1,11 @@
 import type { CSSProperties, VFC } from "react";
 import type { Composition } from "../../../types/prefectures";
 
-import { useCompositionSwr } from "../../../lib/hooks/useCompositionSwr";
-
 import { Graph } from "../../atoms/Graph";
 import { Title } from "../../atoms/Title";
 import { SeriesOptionsType } from "highcharts";
+import { useRecoilValue } from "recoil";
+import { graphDataState } from "../../../lib/atoms/atoms";
 
 const Styles: { [key: string]: CSSProperties } = {
   container: {},
@@ -13,20 +13,20 @@ const Styles: { [key: string]: CSSProperties } = {
 };
 
 const GraphContainer: VFC = () => {
-  const { data, isLoading, isError } = useCompositionSwr(1);
-  if (isLoading) return <div>loading...</div>;
-  if (isError) return <div>failed to load</div>;
+  const graphDatas = useRecoilValue(graphDataState);
   const categories: string[] = [];
   const series: SeriesOptionsType[] = [];
-  const seriesData: number[] = [];
-  data.result.data[0].data.map((value: Composition) => {
-    categories.push(String(value.year));
-    seriesData.push(value.value);
-  });
-  series.push({
-    type: "line",
-    name: "北海道",
-    data: seriesData,
+  graphDatas.map((graphData) => {
+    const seriesData: number[] = [];
+    graphData.data.map((value: Composition) => {
+      categories.push(String(value.year));
+      seriesData.push(value.value);
+    });
+    series.push({
+      type: "line",
+      name: graphData.prefName,
+      data: seriesData,
+    });
   });
   const options: Highcharts.Options = {
     title: {
