@@ -43,7 +43,10 @@ const GraphContainer: VFC = () => {
         text: "人口数",
       },
     },
-    series: series,
+    series:
+      series.length === 0
+        ? [{ type: "line", name: "都道府県", data: [] }]
+        : series,
   };
   return (
     <div style={Styles.container}>
