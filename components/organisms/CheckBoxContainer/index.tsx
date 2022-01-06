@@ -3,6 +3,9 @@ import type { CSSProperties, VFC } from "react";
 import { usePrefecturesSwr } from "../../../lib/hooks/usePrefecturesSwr";
 import { CheckField } from "../../molecules/CheckField/";
 import { Title } from "../../atoms/Title";
+import { graphDataState } from "../../../lib/atoms/atoms";
+import { useRecoilState } from "recoil";
+import { fetcher } from "../../../lib/api/fetcher";
 
 const Styles: { [key: string]: CSSProperties } = {
   container: {},
@@ -10,12 +13,31 @@ const Styles: { [key: string]: CSSProperties } = {
 };
 
 const CheckBoxContainer: VFC = () => {
-  const handleOnChangeCheckBox = (
+  const [graphData, setGraphData] = useRecoilState(graphDataState);
+  const handleOnChangeCheckBox = async (
     prefCode: number,
     prefName: string,
     check: boolean
   ) => {
-    console.log(prefCode, prefName, check);
+    if (check) {
+      const responseData = await fetcher(
+        `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${String(
+          prefCode
+        )}`
+      );
+      setGraphData([
+        ...graphData,
+        {
+          prefName: prefName,
+          data: responseData.result.data[0].data,
+        },
+      ]);
+    } else {
+      const deleteIndex = graphData.findIndex(
+        (value) => value.prefName === prefName
+      );
+      setGraphData(graphData.filter((_, index) => index !== deleteIndex));
+    }
   };
   const { data, isLoading, isError } = usePrefecturesSwr();
   if (isLoading) return <div>loading...</div>;
